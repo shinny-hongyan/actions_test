@@ -33,6 +33,8 @@ jobs:
         _${{matrix.python-version}}_${{matrix.python-arch}}_.log"
         echo "::set-output name=file5::$(date -d today +%Y%m%d) \
         _${{matrix.python-version}}_${{matrix.python-arch}}_.log"  
+        echo "::set-output name=file6::$((date -d today +%Y%m%d)
+        _${{matrix.python-version}}_${{matrix.python-arch}}_.log)" 
     - name: Run Test Case
       run: |
         echo ${{steps.get_log_name.outputs.file}}
@@ -40,6 +42,7 @@ jobs:
         echo ${{steps.get_log_name.outputs.file3}}
         echo ${{steps.get_log_name.outputs.file4}}
         echo ${{steps.get_log_name.outputs.file5}}
+        echo ${{steps.get_log_name.outputs.file6}}
         #echo ${{steps.get_log_name.outputs.date}}
         #echo ${{steps.get_log_name.outputs.version}}
         #echo ${{steps.get_log_name.outputs.log}} 
