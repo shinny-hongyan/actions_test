@@ -31,7 +31,7 @@ jobs:
         _${{matrix.python-version}}_${{matrix.python-arch}}_.log"
         echo "::set-output name=file4::$(date -d today +%Y%m%d) `
         _${{matrix.python-version}}_${{matrix.python-arch}}_.log"
-        echo "::set-output name=file5::$(date -d today +%Y%m%d)^
+        echo "::set-output name=file5::$(date -d today +%Y%m%d) ^
         _${{matrix.python-version}}_${{matrix.python-arch}}_.log"  
         echo "::set-output name=file6::$((date -d today +%Y%m%d)
         _${{matrix.python-version}}_${{matrix.python-arch}}_.log)" 
