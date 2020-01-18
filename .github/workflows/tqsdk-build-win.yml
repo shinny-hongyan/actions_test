@@ -19,16 +19,21 @@ jobs:
     - name: Create log file name
       id: get_log_name
       run: |
-        date=$(date -d today +%Y%m%d)
-        version=$(git rev-parse --short HEAD)
-        log=$date_$version.log
-        log2=$date_$version.log
-        LOG_FILE=$($(date -d today +%Y%m%d)_${{matrix.python-version}}_${{matrix.python-arch}}_$(git rev-parse --short HEAD).log)
-        echo "::set-output name=file::$LOG_FILE"
-    
+        #date=$(date -d today +%Y%m%d)
+        #version=$(git rev-parse --short HEAD)
+        #log=$date_$version.log
+        #log2=$date_$version.log
+        #LOG_FILE=$($(date -d today +%Y%m%d)_${{matrix.python-version}}_${{matrix.python-arch}}_$(git rev-parse --short HEAD).log)
+        echo "::set-output name=file::$(date -d today +%Y%m%d)_${{matrix.python-version}}_${{matrix.python-arch}}_$(git rev-parse --short HEAD).log"
+        echo "::set-output name=file2::$(date -d today +%Y%m%d)\
+        _${{matrix.python-version}}_${{matrix.python-arch}}_$(git rev-parse --short HEAD).log"
+        echo "::set-output name=file3::$(date -d today +%Y%m%d)`
+        _${{matrix.python-version}}_${{matrix.python-arch}}_$(git rev-parse --short HEAD).log"     
     - name: Run Test Case
       run: |
         echo ${{steps.get_log_name.outputs.file}}
-        echo ${{steps.get_log_name.outputs.date}}
-        echo ${{steps.get_log_name.outputs.version}}
-        echo ${{steps.get_log_name.outputs.log}} 
+        echo ${{steps.get_log_name.outputs.file2}}
+        echo ${{steps.get_log_name.outputs.file3}}
+        #echo ${{steps.get_log_name.outputs.date}}
+        #echo ${{steps.get_log_name.outputs.version}}
+        #echo ${{steps.get_log_name.outputs.log}} 
