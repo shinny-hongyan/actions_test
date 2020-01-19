@@ -24,6 +24,6 @@ jobs:
         
     - name: Install dependencies
       run: |
-        pip install --upgrade pip tar
-        tar zcvf test.zip ./log/temp.log
+        pip install zip-files
+        zip-folder -a -o report.zip ./log/temp.log
         
