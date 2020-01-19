@@ -15,15 +15,14 @@ jobs:
 
     runs-on: windows-latest
 
-    steps:
-    - name: Create log file name
-      id: log_name
+    - name: Setup Python ${{matrix.python-version}} ${{matrix.python-arch}}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{matrix.python-version}}
+        architecture: ${{matrix.python-arch}}
+        
+    - name: Install dependencies
       run: |
-        echo "::set-output name=log_path::./log/$(date -d today +%Y%m%d)/"
-        echo "::set-output name=log_name::win${{matrix.python-version}}_${{matrix.python-arch}}.log"
-
-
-    - name: show name
-      run: |
-        echo ${{steps.log_name.outputs.log_path}}
-        echo ${{steps.log_name.outputs.log_name}}
+        pip install --upgrade pip zip
+        zip test.zip ./log/temp.log
+        
