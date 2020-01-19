@@ -42,4 +42,5 @@ jobs:
         echo $dateenv
         echo $fileenv
         echo $envlog
+        echo $dateenv_$dateenv.log
   
