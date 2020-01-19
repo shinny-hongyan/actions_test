@@ -20,8 +20,10 @@ jobs:
       id: log_name
       run: |
         echo "::set-output name=log_path::./log/$(date -d today +%Y%m%d)/"
-        echo $github.workflow
+        echo "::set-output name=log_name::win${{matrix.python-version}}_${{matrix.python-arch}}"
+
 
     - name: show name
       run: |
         echo ${{steps.log_name.outputs.log_path}}
+        echo ${{steps.log_name.outputs.log_name}}
