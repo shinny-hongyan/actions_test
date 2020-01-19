@@ -17,7 +17,11 @@ jobs:
 
     steps:
     - name: Create log file name
-      id: get_log_name
+      id: log_name
       run: |
-        echo $github.sha
+        echo "::set-output name=log_path::log/$(date -d today +%Y%m%d)/"
         echo $github.workflow
+
+    - name: show name
+      run: |
+        echo ${{steps.log_name.outputs.log_path}}
