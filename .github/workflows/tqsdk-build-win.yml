@@ -37,6 +37,8 @@ jobs:
         echo ${{steps.get_log_name.outputs.version}}
         echo ${{steps.get_log_name.outputs.file}}
         echo ${{steps.get_log_name.outputs.file2}}
-        echo ${{env:dateenv}}
-        echo ${{env:fileenv}}
+        #echo ${env:dateenv}}
+        #echo ${{env:fileenv}}
+        echo $dateenv
+        echo $fileenv
   
