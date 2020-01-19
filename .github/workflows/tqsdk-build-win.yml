@@ -34,7 +34,7 @@ jobs:
 
         echo "::set-output name=outlog::$(date -d today +%Y%m%d)_${{matrix.python-version}}_${{matrix.python-arch}}.log"
         ##echo "::set-env name=envlog::$(date -d today +%Y%m%d)_${{matrix.python-version}}_${{matrix.python-arch}}.log"
-        echo "::set-output \
+        echo "::set-output `
         name=outlog2::$(date -d today +%Y%m%d)_${{matrix.python-version}}_${{matrix.python-arch}}.log"
     - name: Run Test Case
       run: |
