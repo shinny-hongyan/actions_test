@@ -19,7 +19,7 @@ jobs:
     - name: Create log file name
       id: log_name
       run: |
-        echo "::set-output name=log_path::log/$(date -d today +%Y%m%d)/"
+        echo "::set-output name=log_path::./log/$(date -d today +%Y%m%d)/"
         echo $github.workflow
 
     - name: show name
