@@ -25,5 +25,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install zip-files
+        mkdir ./log/20200119 -p
+        touch ./log/20200119/res.log
         zip-folder -a -o report.zip ./log
         
