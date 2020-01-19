@@ -24,23 +24,15 @@ jobs:
         #log=$date_$version.log
         #log2=$date_$version.log
         #LOG_FILE=$($(date -d today +%Y%m%d)_${{matrix.python-version}}_${{matrix.python-arch}}_$(git rev-parse --short HEAD).log)
-        echo "::set-output name=file::$(date -d today +%Y%m%d)_${{matrix.python-version}}_${{matrix.python-arch}}_.log"
-        echo "::set-output name=file2::$(date -d today +%Y%m%d)\
-        _${{matrix.python-version}}_${{matrix.python-arch}}_.log"
-        echo "::set-output name=file3::$(date -d today +%Y%m%d)`
-        _${{matrix.python-version}}_${{matrix.python-arch}}_.log"
-        echo "::set-output name=file4::$(date -d today +%Y%m%d) `
-        _${{matrix.python-version}}_${{matrix.python-arch}}_.log"
-        echo "::set-output name=file5::$(date -d today +%Y%m%d)
-        _${{matrix.python-version}}_${{matrix.python-arch}}_.log"
-    - name: Run Test Case
-      run: |
-        echo ${{steps.get_log_name.outputs.file}}
-        echo ${{steps.get_log_name.outputs.file2}}
-        echo ${{steps.get_log_name.outputs.file3}}
-        echo ${{steps.get_log_name.outputs.file4}}
-        echo ${{steps.get_log_name.outputs.file5}}
         
-        echo ${{steps.get_log_name.outputs.date}}
-        #echo ${{steps.get_log_name.outputs.version}}
-        #echo ${{steps.get_log_name.outputs.log}} 
+        file1="$(date -d today +%Y%m%d)\
+        _${{matrix.python-version}}_${{matrix.python-arch}}_.log"
+        file2="$(date -d today +%Y%m%d) \
+        _${{matrix.python-version}}_${{matrix.python-arch}}_.log"
+        file3="$(date -d today +%Y%m%d) ^
+        _${{matrix.python-version}}_${{matrix.python-arch}}_.log"
+
+        echo $file1
+        echo $file2
+        echo $file3
+ 
