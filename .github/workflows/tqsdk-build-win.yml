@@ -14,7 +14,8 @@ jobs:
       TZ: "UTC-8"
 
     runs-on: windows-latest
-
+    
+    steps:
     - name: Setup Python ${{matrix.python-version}} ${{matrix.python-arch}}
       uses: actions/setup-python@v1
       with:
