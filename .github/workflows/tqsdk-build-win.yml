@@ -25,5 +25,5 @@ jobs:
     - name: Install dependencies
       run: |
         pip install zip-files
-        zip-folder -a -o report.zip ./log/temp.log
+        zip-folder -a -o report.zip ./log
         
