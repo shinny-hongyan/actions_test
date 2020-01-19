@@ -21,7 +21,7 @@ jobs:
       run: |
         #echo "$(date -d today +%Y%m%d)_${{matrix.python-version}}_${{matrix.python-arch}}.log" > .version/revision.txt
         #echo $(date -d today +%Y%m%d)_${{matrix.python-version}}_${{matrix.python-arch}}.log > .version/revision.txt
-        
+        echo "github.workflow is"$github.workflow
 
         echo "::set-env name=dateenv::$(date -d today +%Y%m%d)"
         echo "::set-env name=fileenv::${env:dateenv}.log"
