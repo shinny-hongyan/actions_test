@@ -20,7 +20,11 @@ jobs:
       id: get_log_name
       run: |
         #echo "$(date -d today +%Y%m%d)_${{matrix.python-version}}_${{matrix.python-arch}}.log" > .version/revision.txt
-        echo $(date -d today +%Y%m%d)_${{matrix.python-version}}_${{matrix.python-arch}}.log > .version/revision.txt
+        #echo $(date -d today +%Y%m%d)_${{matrix.python-version}}_${{matrix.python-arch}}.log > .version/revision.txt
+        
+        echo "::set-env name=dateenv::$(date -d today +%Y%m%d)"
+        echo "::set-env name=fileenv::$dateenv.log"
+
         echo "::set-output name=date::$(date -d today +%Y%m%d)"
         echo "::set-output name=version::${{matrix.python-version}}"
         echo "::set-output name=arch::${{matrix.python-arch}}"
@@ -33,4 +37,6 @@ jobs:
         echo ${{steps.get_log_name.outputs.version}}
         echo ${{steps.get_log_name.outputs.file}}
         echo ${{steps.get_log_name.outputs.file2}}
+        echo ${{env:dateenv}}
+        echo ${{env:fileenv}}
   
