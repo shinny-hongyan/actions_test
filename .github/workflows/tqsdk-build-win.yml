@@ -29,7 +29,7 @@ jobs:
         echo "::set-output name=version::${{matrix.python-version}}"
         echo "::set-output name=arch::${{matrix.python-arch}}"
         echo "::set-output name=file::$date_$version_$arch.log"
-        echo "::set-output name=file2::$(<.version/major.txt)"        
+        #echo "::set-output name=file2::$(<.version/major.txt)"        
 
     - name: Run Test Case
       run: |
