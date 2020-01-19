@@ -19,32 +19,5 @@ jobs:
     - name: Create log file name
       id: get_log_name
       run: |
-        #echo "$(date -d today +%Y%m%d)_${{matrix.python-version}}_${{matrix.python-arch}}.log" > .version/revision.txt
-        #echo $(date -d today +%Y%m%d)_${{matrix.python-version}}_${{matrix.python-arch}}.log > .version/revision.txt
-        echo "github.workflow is"${{github.workflow}}
-
-        echo "::set-env name=dateenv::$(date -d today +%Y%m%d)"
-        echo "::set-env name=fileenv::${env:dateenv}.log"
-
-        echo "::set-output name=date::$(date -d today +%Y%m%d)"
-        echo "::set-output name=version::${{matrix.python-version}}"
-        echo "::set-output name=arch::${{matrix.python-arch}}"
-        echo "::set-output name=file::$date_$version_$arch.log"
-        #echo "::set-output name=file2::$(<.version/major.txt)"        
-
-        echo "::set-output name=outlog::$(date -d today +%Y%m%d)_${{matrix.python-version}}_${{matrix.python-arch}}.log"
-        ##echo "::set-env name=envlog::$(date -d today +%Y%m%d)_${{matrix.python-version}}_${{matrix.python-arch}}.log"
-        echo "::set-output `
-        name=outlog2::$(date -d today +%Y%m%d)_${{matrix.python-version}}_${{matrix.python-arch}}.log"
-    - name: Run Test Case
-      run: |
-        echo ${{steps.get_log_name.outputs.date}}
-        echo ${{steps.get_log_name.outputs.version}}
-        echo ${{steps.get_log_name.outputs.file}}
-        #echo ${{steps.get_log_name.outputs.file2}}
-        echo ${env:dateenv}.log
-        echo $fileenv
-        echo ${{steps.get_log_name.outputs.outlog}}
-        echo ${{steps.get_log_name.outputs.outlog2}}
-        echo $dateenv_$dateenv.log
-  
+        echo $github.sha
+        echo $github.workflow
