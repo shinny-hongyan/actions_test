@@ -23,7 +23,7 @@ jobs:
         #version=$(git rev-parse --short HEAD)
         #log=$date_$version.log
         #log2=$date_$version.log
-        file0=$($(date -d today +%Y%m%d)_${{matrix.python-version}}_${{matrix.python-arch}}.log)
+        file0="$(date -d today +%Y%m%d)_${{matrix.python-version}}_${{matrix.python-arch}}.log"
         
         file1="$(date -d today +%Y%m%d)\
         _${{matrix.python-version}}_${{matrix.python-arch}}_.log"
