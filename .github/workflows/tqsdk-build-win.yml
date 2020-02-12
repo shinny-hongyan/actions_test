@@ -22,7 +22,7 @@ jobs:
     - name: Install dependencies
       timeout-minutes: 1
       run: |
-        echo sleep 60s
+        echo sleep 120s
         sleep 2m
 
     - name: Install dependencies
