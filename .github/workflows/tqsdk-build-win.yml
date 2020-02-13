@@ -25,9 +25,13 @@ jobs:
         echo sleep 120s
         sleep 2m
 
-    - name: Install dependencies
+    - name: run  with always
       if: always()
       run: |
         sleep 30
         echo iam alive        
-        
+
+    - name: run  without always
+      run: |
+        sleep 30
+        echo iam alive            
