@@ -23,15 +23,15 @@ jobs:
       timeout-minutes: 1
       run: |
         echo sleep 120s
-        sleep 2m
+        sleep 60m
 
     - name: run  with always
       if: always()
       run: |
-        sleep 30
+        sleep 60
         echo iam alive        
 
     - name: run  without always
       run: |
-        sleep 30
+        sleep 60
         echo iam alive            
