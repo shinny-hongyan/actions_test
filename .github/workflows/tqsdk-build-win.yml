@@ -44,4 +44,6 @@ jobs:
         MATRIX_CONTEXT: ${{ toJson(matrix) }}
       run: echo "$MATRIX_CONTEXT"
     - name: other people pr
-      run: echo ${GITHUB_REF}            
+      run: |
+        echo ${{github.actor}}
+        echo ${{github.head.label}}                  
