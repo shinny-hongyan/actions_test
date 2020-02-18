@@ -1,6 +1,6 @@
 name: actions_test
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -19,19 +19,29 @@ jobs:
     - name: checkuot
       uses: actions/checkout@v1
         
-    - name: Install dependencies
-      timeout-minutes: 1
-      run: |
-        echo sleep 120s
-        sleep 60m
-
-    - name: run  with always
-      if: always()
-      run: |
-        sleep 60
-        echo iam alive        
-
-    - name: run  without always
-      run: |
-        sleep 60
-        echo iam alive            
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+    - name: Dump job context
+      env:
+        JOB_CONTEXT: ${{ toJson(job) }}
+      run: echo "$JOB_CONTEXT"
+    - name: Dump steps context
+      env:
+        STEPS_CONTEXT: ${{ toJson(steps) }}
+      run: echo "$STEPS_CONTEXT"
+    - name: Dump runner context
+      env:
+        RUNNER_CONTEXT: ${{ toJson(runner) }}
+      run: echo "$RUNNER_CONTEXT"
+    - name: Dump strategy context
+      env:
+        STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+      run: echo "$STRATEGY_CONTEXT"
+    - name: Dump matrix context
+      env:
+        MATRIX_CONTEXT: ${{ toJson(matrix) }}
+      run: echo "$MATRIX_CONTEXT"
+    - name: other people pr
+      run: echo ${GITHUB_REF}            
