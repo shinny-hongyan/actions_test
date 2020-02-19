@@ -5,8 +5,8 @@ on:
     branches:
       - '*'
 
-    tags:
-      - refs/tags/*
+    tags-ignore:
+      - refs/heads/*
 
   pull_request:
     master:
