@@ -1,6 +1,17 @@
 name: actions_test
 
-on: [push, pull_request]
+on: 
+  push:
+    branches:
+      - '*'
+
+    tags:
+      - refs/tags/*
+
+  pull_request:
+    master:
+      - '*'
+  
 
 jobs:
   build:
@@ -46,4 +57,4 @@ jobs:
     - name: other people pr
       run: |
         echo ${{github.actor}}
-        echo ${{github.head.label}}                  
+        echo ${{github.head.label}}
