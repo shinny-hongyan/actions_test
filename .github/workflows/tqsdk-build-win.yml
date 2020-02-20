@@ -9,8 +9,8 @@ on:
       - refs/heads/*
 
   pull_request:
-    master:
-      - '*'
+    branches:
+      - master
   
 
 jobs:
@@ -58,3 +58,6 @@ jobs:
       run: |
         echo ${{github.actor}}
         echo ${{github.head.label}}
+        echo ----------------------------------------
+        echo ${{ github.event.number }}
+        echo ${{ github.event_name }}
