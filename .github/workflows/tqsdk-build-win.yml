@@ -71,9 +71,4 @@ jobs:
     - name: other people pr
       if: env.TRIG_EVENT == 'pull_request'
       run: |
-        echo this is pull_request         
-
-    - name: other people pr
-      if: ${{ env.TRIG_EVENT }} == 'pull_request'
-      run: |
-        echo this is pull_request    
+        echo this is pull_request          
