@@ -63,6 +63,6 @@ jobs:
         echo ${{ github.event_name }}
 
     - name: other people pr
-      if ${{ github.event_name }} == 'pull_request'
+      if: ${{ github.event_name }} == 'pull_request'
       run: |
         echo this is pull_request  
