@@ -19,8 +19,8 @@ jobs:
       matrix:
         envinfo:
           - { os: ubuntu-latest, python-version: 3.6.x, python-arch: x64, STH: "linux-3.6-x64" }
-          - { os: windows-latest, python-version: 3.6.x, python-arch: x86, STH: "linux-3.6-x64" } 
-          - { os: windows-latest, python-version: 3.6.x, python-arch: x64, STH: "linux-3.6-x64" } 
+          - { os: windows-latest, python-version: 3.6.x, python-arch: x86, STH: "windows-3.6-x86" } 
+          - { os: windows-latest, python-version: 3.6.x, python-arch: x64, STH: "windows-3.6-x64" } 
 
     env:
       PYTHONHASHSEED: 32
