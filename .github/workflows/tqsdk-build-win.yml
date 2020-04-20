@@ -27,8 +27,8 @@ jobs:
       TZ: 'Asia/Shanghai'
       STH: ${{ matrix.envinfo.STH }}
       LOG_PATH: './log_archive/'
-      REF: ${GITHUB_REF}
-      REF1: ${GITHUB_REF#refs/heads/}
+      REF: ${{ GITHUB_REF }}
+      REF1: ${{ GITHUB_REF#refs/heads/ }}
 
     runs-on: ${{ matrix.envinfo.os }}
 
