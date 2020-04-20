@@ -26,6 +26,7 @@ jobs:
       PYTHONHASHSEED: 32
       TZ: 'Asia/Shanghai'
       STH: ${{ matrix.envinfo.STH }}
+      LOG_PATH: './log_archive/'
 
     runs-on: ${{ matrix.envinfo.os }}
 
