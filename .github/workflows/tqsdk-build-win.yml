@@ -58,4 +58,4 @@ jobs:
         AWS_REGION: ${{ secrets.AWS_REGION }}
         SOURCE_DIR: "build/doc"
         DEST_DIR: DEST_DIR_DIST
-        DEST_DIR: ${ DEST_DIR_DIST }
+        DEST_DIR1: ${{ env.DEST_DIR_DIST }}
