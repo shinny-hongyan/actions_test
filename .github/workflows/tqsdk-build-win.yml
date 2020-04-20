@@ -29,7 +29,9 @@ jobs:
     env:
       PYTHONHASHSEED: 32
       TZ: 'Asia/Shanghai'
-    
+
+    runs-on: ${{ matrix.os }}
+
     steps:
     - name: checkuot
       uses: actions/checkout@v1
