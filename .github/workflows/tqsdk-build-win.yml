@@ -18,13 +18,14 @@ jobs:
     strategy:
       matrix:
         envinfo:
-          - { os: ubuntu-latest, python-version: 3.6.x, python-arch: x64 }
-          - { os: windows-latest, python-version: 3.6.x, python-arch: x86 } 
-          - { os: windows-latest, python-version: 3.6.x, python-arch: x64 } 
+          - { os: ubuntu-latest, python-version: 3.6.x, python-arch: x64, STH: "linux-3.6-x64" }
+          - { os: windows-latest, python-version: 3.6.x, python-arch: x86, STH: "linux-3.6-x64" } 
+          - { os: windows-latest, python-version: 3.6.x, python-arch: x64, STH: "linux-3.6-x64" } 
 
     env:
       PYTHONHASHSEED: 32
       TZ: 'Asia/Shanghai'
+      STH: ${{ matrix.envinfo.STH }}
 
     runs-on: ${{ matrix.envinfo.os }}
 
