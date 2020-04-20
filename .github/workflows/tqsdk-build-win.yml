@@ -41,6 +41,11 @@ jobs:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: echo ${{ matrix.envinfo.os }} ${{ env.LOG_PATH }}
 
+    - name: Setup branch AWS S3 docs path
+      if: startsWith(github.event.ref, 'refs/heads')
+      run: |
+        echo "::set-env name=DEST_DIR_DIST::docs/tqsdk-python/$(echo ${GITHUB_REF#refs/heads/})/"
+
     - name: Publish tag build/doc to AWS S3
       if: github.event_name != 'pull_request'
       uses: jakejarvis/s3-sync-action@master
@@ -52,4 +57,5 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ${{ secrets.AWS_REGION }}
         SOURCE_DIR: "build/doc"
-        DEST_DIR: "docs/tqsdk-python/$(echo ${GITHUB_REF#refs/heads/})/"
+        DEST_DIR: DEST_DIR_DIST
+        DEST_DIR: ${ DEST_DIR_DIST }
