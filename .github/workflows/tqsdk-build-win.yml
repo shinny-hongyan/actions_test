@@ -17,14 +17,18 @@ jobs:
   build:
     strategy:
       matrix:
-        python-version: [3.6]
-        python-arch: ["x86", "x64"]
+        include:
+          - os: ubuntu-latest
+            python-version: 3.6.x
+            python-arch: ["x64"]
+
+          - os: windows-latest
+            python-version: 3.6.x
+            python-arch: ["x86", "x64"]
 
     env:
       PYTHONHASHSEED: 32
       TZ: 'Asia/Shanghai'
-
-    runs-on: ubuntu-latest
     
     steps:
     - name: checkuot
@@ -33,20 +37,4 @@ jobs:
     - name: Dump GitHub context
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
-
-  deploy:
-    env:
-      PYTHONHASHSEED: 32
-      TZ: 'Asia/Shanghai'
-
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: checkuot
-      uses: actions/checkout@v1
-        
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "deploy haha"
+      run: echo ${{ matrix.os }} ${{ matrix.python-arch }}
