@@ -35,4 +35,4 @@ jobs:
     - name: Dump GitHub context
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo ${{ matrix.os }} ${{ matrix.python-arch }}
+      run: echo ${{ matrix.envinfo.os }} ${{ matrix.envinfo.python-arch }}
