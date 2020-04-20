@@ -17,20 +17,16 @@ jobs:
   build:
     strategy:
       matrix:
-        include:
-          - os: ubuntu-latest
-            python-version: 3.6.x
-            python-arch: ["x64"]
-
-          - os: windows-latest
-            python-version: 3.6.x
-            python-arch: ["x86", "x64"]
+        envinfo:
+          - { os: ubuntu-latest, python-version: 3.6.x, python-arch: x64 }
+          - { os: windows-latest, python-version: 3.6.x, python-arch: x86 } 
+          - { os: windows-latest, python-version: 3.6.x, python-arch: x64 } 
 
     env:
       PYTHONHASHSEED: 32
       TZ: 'Asia/Shanghai'
 
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.envinfo.os }}
 
     steps:
     - name: checkuot
