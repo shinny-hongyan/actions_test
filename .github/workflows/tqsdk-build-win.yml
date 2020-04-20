@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         python-version: [3.6]
-        python-arch: ["x86"]
+        python-arch: ["x86", "x64"]
 
     env:
       PYTHONHASHSEED: 32
@@ -34,30 +34,19 @@ jobs:
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: echo "$GITHUB_CONTEXT"
-    - name: Dump job context
+
+  deploy:
+    env:
+      PYTHONHASHSEED: 32
+      TZ: 'Asia/Shanghai'
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: checkuot
+      uses: actions/checkout@v1
+        
+    - name: Dump GitHub context
       env:
-        JOB_CONTEXT: ${{ toJson(job) }}
-      run: echo "$JOB_CONTEXT"
-    - name: Dump steps context
-      env:
-        STEPS_CONTEXT: ${{ toJson(steps) }}
-      run: echo "$STEPS_CONTEXT"
-    - name: Dump runner context
-      env:
-        RUNNER_CONTEXT: ${{ toJson(runner) }}
-      run: echo "$RUNNER_CONTEXT"
-    - name: Dump strategy context
-      env:
-        STRATEGY_CONTEXT: ${{ toJson(strategy) }}
-      run: echo "$STRATEGY_CONTEXT"
-    - name: Dump matrix context
-      env:
-        MATRIX_CONTEXT: ${{ toJson(matrix) }}
-      run: echo "$MATRIX_CONTEXT"
-    - name: other people pr
-      run: |
-        echo ${{github.actor}}
-        echo ${{github.head.label}}
-        echo ----------------------------------------
-        echo ${{ github.event.number }}
-        echo ${{ github.event_name }}
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "deploy haha"
