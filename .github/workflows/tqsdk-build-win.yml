@@ -28,7 +28,7 @@ jobs:
       REF: ${{ github.ref }}
       REF2: ${{ github.sha }}
       REFNAME: $(echo ${{ github.ref }}#refs/heads/})
-      DATE: $(date -d today +%Y%m%d)
+      DATE: $(date -d today +%Y%m%d) 
 
     runs-on: ${{ matrix.envinfo.os }}
 
