@@ -39,10 +39,11 @@ jobs:
     - name: file size list
       id: file-size-check
       run: |
-        git ls-files | xargs ls -l | sort -nrk5 | awk '{if($5 > ${{ secrets.FILE_LIMIT_SIZE }}) print $9}' | xargs ls -lrth'
+        git ls-files | xargs ls -l | sort -nrk5 | awk '{if($5 > ${{ secrets.FILE_LIMIT_SIZE }}) print $9 }' | xargs ls -lrth
         echo "::set-output name=LARGE-FILES-COUNT::$(git ls-files | xargs ls -l | sort -nrk5 | awk '{if($5 > ${{ secrets.FILE_LIMIT_SIZE }}) print $0}' | wc -l)"
 
-    - if: steps.file-size-check.outputs.LARGE-FILES-COUNT != 0
+    - name: file size check
+      if: steps.file-size-check.outputs.LARGE-FILES-COUNT != 0
       run: |
         echo "file size check failed"
         exit 1
