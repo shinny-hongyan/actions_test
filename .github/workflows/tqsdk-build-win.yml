@@ -35,7 +35,19 @@ jobs:
     steps:
     - name: checkuot
       uses: actions/checkout@v1
-        
+
+    - name: file size list
+      id: file-size-check
+      run: |
+        echo "::set-output name=LARGE-FILES::$(git ls-files | xargs ls -l | sort -nrk5 | awk '{if($5 > 2097152) print $0} | wc -l)"
+        git ls-files | xargs ls -l | sort -nrk5 | awk '{if($5 > 2) print $0}'
+
+    - name: file size check
+      if: steps.file-size-check.outputs.LARGE-FILES != 0
+      run: |
+        echo "file size check failed"
+        exit 1
+
     - name: Dump GitHub context
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
