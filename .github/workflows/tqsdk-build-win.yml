@@ -39,7 +39,7 @@ jobs:
     - name: file size list
       id: file-size-check
       run: |
-        echo "::set-output name=LARGE-FILES::$(git ls-files | xargs ls -l | sort -nrk5 | awk '{if($5 > 2097152) print $0} | wc -l)"
+        echo "::set-output name=LARGE-FILES::$(git ls-files | xargs ls -l | sort -nrk5 | awk '{if($5 > 2097152) print $0}' | wc -l)"
         git ls-files | xargs ls -l | sort -nrk5 | awk '{if($5 > 2) print $0}'
 
     - name: file size check
